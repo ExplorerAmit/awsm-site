@@ -20,6 +20,47 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://awsm.im/">
+<!-- Business details for search engines (Google Maps / local results) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://awsm.im/#business",
+  "name": "AWSM (Awesome Work Study Meeting place)",
+  "alternateName": ["AWSM", "awsm.im"],
+  "description": "Co-working space, study library and quiet reading room in Kalyan West. 8 professional desks, a 12-seat reading and meeting room, power at every seat, lockers for monthly members. Open 7 am to 10 pm daily. Student discounts available.",
+  "url": "https://awsm.im/",
+  "image": "https://awsm.im/images/og-image.png",
+  "logo": "https://awsm.im/images/icon-512.png",
+  "telephone": "+91-98909-30707",
+  "priceRange": "₹100–₹3,500",
+  "currenciesAccepted": "INR",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Office 212, 2nd Floor, Corner Stone, Near Yogidham",
+    "addressLocality": "Kalyan West",
+    "addressRegion": "Maharashtra",
+    "postalCode": "421301",
+    "addressCountry": "IN"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 19.2463242, "longitude": 73.1525055 },
+  "hasMap": "https://maps.app.goo.gl/SVDUFAnnZykLd4G38",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "07:00",
+    "closes": "22:00"
+  }],
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Power at every seat", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Silent reading room", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Meeting room bookable hourly", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Lockers", "value": true }
+  ],
+  "keywords": "co-working space, study library, reading room, study room, meeting room, Kalyan West"
+}
+</script>
 <style>
   :root {
     --ink: #14161A;
@@ -223,14 +264,13 @@
 
 <!-- =====================================================================
      EDIT BEFORE GOING LIVE (search for "EDIT"):
-     1. Weekly and 10-day prices -> replace "Ask us"
-     2. Photos                   -> put 4 photos in the "images" folder named
+     1. Photos                  -> put 4 photos in the "images" folder named
                                     photo-1.jpg  Co-working area
                                     photo-2.jpg  Reading / meeting room
                                     photo-3.jpg  Reception and entrance
                                     photo-4.jpg  Desk close-up
                                     (landscape JPG, ~1600px wide; empty slots show a placeholder)
-     3. Logo files               -> upload favicon.ico next to this file, and
+     2. Logo files              -> upload favicon.ico next to this file, and
                                     favicon.svg, apple-touch-icon.png, icon-192.png,
                                     icon-512.png and og-image.png into "images"
      ===================================================================== -->
@@ -313,14 +353,12 @@
 
       <div class="plan">
         <h3>Multi-day</h3>
-        <div class="plan-sub">For exam prep, projects and busy weeks</div>
+        <div class="plan-sub">9 hrs a day, for exam prep, projects and busy weeks</div>
         <div class="rows">
-          <!-- EDIT: weekly price -->
-          <div class="row"><span class="label">Weekly pass</span><span class="amt tbd">Ask us</span></div>
-          <!-- EDIT: 10-day price -->
-          <div class="row"><span class="label">10-day pass</span><span class="amt tbd">Ask us</span></div>
+          <div class="row"><span class="label">Weekly pass</span><span class="amt"><s class="was">₹1,200</s>₹900</span></div>
+          <div class="row"><span class="label">10-day pass</span><span class="amt"><s class="was">₹1,600</s>₹1,100</span></div>
         </div>
-        <div class="note">Use the days within the pass validity. Includes an access card, to be returned when your pass ends.</div>
+        <div class="note">Launch prices for a limited time. Use the days within the pass validity. Includes an access card, to be returned when your pass ends.</div>
       </div>
 
       <div class="plan featured">
