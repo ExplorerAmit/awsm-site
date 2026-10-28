@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://awsm.im/">
 <!-- Business details for search engines (Google Maps / local results) -->
 <script type="application/ld+json">
@@ -84,10 +84,10 @@
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font: 16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font: 16px/1.6 Inter, "Noto Sans Devanagari", system-ui, -apple-system, "Segoe UI", sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 { font-family: "Bricolage Grotesque", Inter, sans-serif; line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", Inter, "Noto Sans Devanagari", sans-serif; line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
   a { color: inherit; }
   .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
   section { padding: 88px 0; }
@@ -117,7 +117,23 @@
   .nav-links a { text-decoration: none; opacity: .85; }
   .nav-links a:hover { opacity: 1; }
   .nav-links .btn { padding: 9px 16px; opacity: 1; }
-  @media (max-width: 760px) { .nav-links a:not(.btn) { display: none; } }
+  @media (max-width: 760px) { .nav-links a:not(.btn) { display: none; } .nav-links { gap: 10px; } }
+
+  /* Language switcher */
+  .lang { appearance: none; -webkit-appearance: none; background: rgba(255,255,255,.08) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 10px center; color: #fff; border: 1.5px solid rgba(255,255,255,.3); border-radius: 999px; padding: 7px 28px 7px 12px; font: 600 14px/1.2 Inter, "Noto Sans Devanagari", sans-serif; cursor: pointer; }
+  .lang:hover { background-color: rgba(255,255,255,.14); }
+  .lang option { color: var(--ink); background: #fff; }
+  .nav-links .btn { white-space: nowrap; }
+  @media (max-width: 420px) {
+    .nav-inner { gap: 10px; } .nav-links { gap: 8px; }
+    .logo { font-size: 21px; gap: 7px; } .logo svg { width: 28px; height: 28px; }
+    .lang { font-size: 13px; padding: 6px 24px 6px 10px; background-position: right 8px center; }
+    .nav-links .btn { padding: 8px 12px; font-size: 14px; }
+  }
+
+  /* Devanagari: no tight tracking or wide caps spacing, which breaks the headline stroke */
+  :lang(hi) h1, :lang(hi) h2, :lang(hi) h3 { letter-spacing: 0; line-height: 1.3; }
+  :lang(hi) .eyebrow, :lang(hi) .badge, :lang(hi) .student-note .tag { letter-spacing: 0; }
 
   /* Hero */
   .hero { background: var(--ink); color: #fff; padding: 96px 0 104px; position: relative; overflow: hidden; }
@@ -288,12 +304,17 @@
   <div class="wrap nav-inner">
     <a href="#top" class="logo" aria-label="awsm.im home"><svg aria-hidden="true"><use href="#awsm-mark"/></svg><span>awsm<span class="tld">.im</span></span></a>
     <nav class="nav-links">
-      <a href="#pricing">Pricing</a>
-      <a href="#spaces">Spaces</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn-primary" href="https://wa.me/919890930707?text=Hi%20AWSM%2C%20I%27d%20like%20to%20book%20a%20visit." target="_blank" rel="noopener">Book a visit</a>
+      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#spaces" data-i18n="nav.spaces">Spaces</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+      <select class="lang" id="lang" aria-label="Language / भाषा">
+        <option value="en">EN</option>
+        <option value="hi">हिंदी</option>
+        <option value="hl">Hinglish</option>
+      </select>
+      <a class="btn btn-primary" href="https://wa.me/919890930707?text=Hi%20AWSM%2C%20I%27d%20like%20to%20book%20a%20visit." target="_blank" rel="noopener" data-i18n="nav.book">Book a visit</a>
     </nav>
   </div>
 </header>
@@ -302,24 +323,24 @@
   <div class="wrap">
     <div>
       <h1><span class="ini">A</span>wesome.<br><span class="ini">W</span>ork.<br><span class="ini">S</span>tudy.<br><span class="ini">M</span>eet.</h1>
-      <p>A quiet, fully equipped co-working space and reading room. Walk in for a few hours, or make it your desk for the month.</p>
+      <p data-i18n="hero.lead">A quiet, fully equipped co-working space and reading room. Walk in for a few hours, or make it your desk for the month.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://wa.me/919890930707?text=Hi%20AWSM%2C%20I%27d%20like%20to%20book%20a%20visit." target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>
-          Book on WhatsApp
+          <span data-i18n="hero.wa">Book on WhatsApp</span>
         </a>
-        <a class="btn btn-ghost" href="#pricing">See pricing</a>
+        <a class="btn btn-ghost" href="#pricing" data-i18n="hero.seePricing">See pricing</a>
       </div>
       <div class="acronym"><b>A</b>wesome <b>W</b>ork <b>S</b>tudy <b>M</b>eeting place</div>
     </div>
     <aside class="hero-card" aria-label="Quick pricing">
-      <div class="from">Desks from</div>
-      <div class="price">₹100 <small>/ 4 hours</small></div>
+      <div class="from" data-i18n="card.from">Desks from</div>
+      <div class="price">₹100 <small data-i18n="card.per">/ 4 hours</small></div>
       <ul>
-        <li><span class="tick">✓</span> Dedicated drawer, power at your seat</li>
-        <li><span class="tick">✓</span> Quiet 12-seat reading room</li>
-        <li><span class="tick">✓</span> Meeting room by the hour</li>
-        <li><span class="tick">✓</span> Open 7 am – 10 pm, every day</li>
+        <li><span class="tick">✓</span> <span data-i18n="card.li1">Dedicated drawer, power at your seat</span></li>
+        <li><span class="tick">✓</span> <span data-i18n="card.li2">Quiet 12-seat reading room</span></li>
+        <li><span class="tick">✓</span> <span data-i18n="card.li3">Meeting room by the hour</span></li>
+        <li><span class="tick">✓</span> <span data-i18n="card.li4">Open 7 am – 10 pm, every day</span></li>
       </ul>
     </aside>
   </div>
@@ -327,63 +348,63 @@
 
 <section class="stats" aria-label="At a glance">
   <div class="wrap">
-    <div class="stat"><b>8</b><span>Professional desks</span></div>
-    <div class="stat"><b>12</b><span>Seat reading room</span></div>
-    <div class="stat"><b>₹200</b><span>Full-day pass (9 hrs)</span></div>
-    <div class="stat"><b><s class="was">₹4,000</s>₹3,000</b><span>Monthly desk · limited-time offer</span></div>
+    <div class="stat"><b>8</b><span data-i18n="stat.desks">Professional desks</span></div>
+    <div class="stat"><b>12</b><span data-i18n="stat.reading">Seat reading room</span></div>
+    <div class="stat"><b>₹200</b><span data-i18n="stat.day">Full-day pass (9 hrs)</span></div>
+    <div class="stat"><b><s class="was">₹4,000</s>₹3,000</b><span data-i18n="stat.month">Monthly desk · limited-time offer</span></div>
   </div>
 </section>
 
 <section id="pricing">
   <div class="wrap">
-    <div class="eyebrow">Pricing</div>
-    <h2 class="section-title">Pay for exactly the time you need.</h2>
-    <p class="lead">No contracts, no hidden charges. Pick a pass that fits your week.</p>
+    <div class="eyebrow" data-i18n="pricing.eyebrow">Pricing</div>
+    <h2 class="section-title" data-i18n="pricing.title">Pay for exactly the time you need.</h2>
+    <p class="lead" data-i18n="pricing.lead">No contracts, no hidden charges. Pick a pass that fits your week.</p>
 
     <div class="pricing-grid">
       <div class="plan">
-        <h3>Short stays</h3>
-        <div class="plan-sub">For a focused session or a full day</div>
+        <h3 data-i18n="p1.h">Short stays</h3>
+        <div class="plan-sub" data-i18n="p1.sub">For a focused session or a full day</div>
         <div class="rows">
-          <div class="row"><span class="label">4 hours</span><span class="amt">₹100</span></div>
-          <div class="row"><span class="label">9 hours (day pass)</span><span class="amt">₹200</span></div>
+          <div class="row"><span class="label" data-i18n="p1.l1">4 hours</span><span class="amt">₹100</span></div>
+          <div class="row"><span class="label" data-i18n="p1.l2">9 hours (day pass)</span><span class="amt">₹200</span></div>
         </div>
-        <div class="note">Walk in or message us to hold a desk.</div>
+        <div class="note" data-i18n="p1.note">Walk in or message us to hold a desk.</div>
       </div>
 
       <div class="plan">
-        <h3>Multi-day</h3>
-        <div class="plan-sub">9 hrs a day, for exam prep, projects and busy weeks</div>
+        <h3 data-i18n="p2.h">Multi-day</h3>
+        <div class="plan-sub" data-i18n="p2.sub">9 hrs a day, for exam prep, projects and busy weeks</div>
         <div class="rows">
-          <div class="row"><span class="label">Weekly pass</span><span class="amt"><s class="was">₹1,200</s>₹900</span></div>
-          <div class="row"><span class="label">10-day pass</span><span class="amt"><s class="was">₹1,600</s>₹1,100</span></div>
+          <div class="row"><span class="label" data-i18n="p2.l1">Weekly pass</span><span class="amt"><s class="was">₹1,200</s>₹900</span></div>
+          <div class="row"><span class="label" data-i18n="p2.l2">10-day pass</span><span class="amt"><s class="was">₹1,600</s>₹1,100</span></div>
         </div>
-        <div class="note">Launch prices for a limited time. Use the days within the pass validity. Includes an access card, to be returned when your pass ends.</div>
+        <div class="note" data-i18n="p2.note">Launch prices for a limited time. Use the days within the pass validity. Includes an access card, to be returned when your pass ends.</div>
       </div>
 
       <div class="plan featured">
-        <span class="badge">LIMITED-TIME OFFER</span>
-        <h3>Monthly</h3>
-        <div class="plan-sub">30 days, your regular desk</div>
+        <span class="badge" data-i18n="p3.badge">LIMITED-TIME OFFER</span>
+        <h3 data-i18n="p3.h">Monthly</h3>
+        <div class="plan-sub" data-i18n="p3.sub">30 days, your regular desk</div>
         <div class="rows">
-          <div class="row"><span class="label">9 hrs / day</span><span class="amt"><s class="was">₹4,000</s>₹3,000</span></div>
-          <div class="row"><span class="label">12 hrs / day</span><span class="amt"><s class="was">₹5,000</s>₹3,500</span></div>
+          <div class="row"><span class="label" data-i18n="p3.l1">9 hrs / day</span><span class="amt"><s class="was">₹4,000</s>₹3,000</span></div>
+          <div class="row"><span class="label" data-i18n="p3.l2">12 hrs / day</span><span class="amt"><s class="was">₹5,000</s>₹3,500</span></div>
         </div>
-        <div class="note">Launch offer for a limited time. Includes an access card and a dedicated locker (refundable key deposit ₹300).</div>
+        <div class="note" data-i18n="p3.note">Launch offer for a limited time. Includes an access card and a dedicated locker (refundable key deposit ₹300).</div>
       </div>
     </div>
     <div class="student-note">
-      <span class="tag">STUDENTS</span>
-      <p><b>Special discount available for students.</b> Bring a valid student ID when you sign up.</p>
-      <a href="https://wa.me/919890930707?text=Hi%20AWSM%2C%20I%27m%20a%20student.%20Please%20share%20the%20student%20discount%20details." target="_blank" rel="noopener">Ask about student rates →</a>
+      <span class="tag" data-i18n="student.tag">STUDENTS</span>
+      <p data-i18n="student.p"><b>Special discount available for students.</b> Bring a valid student ID when you sign up.</p>
+      <a href="https://wa.me/919890930707?text=Hi%20AWSM%2C%20I%27m%20a%20student.%20Please%20share%20the%20student%20discount%20details." target="_blank" rel="noopener" data-i18n="student.a">Ask about student rates →</a>
     </div>
   </div>
 </section>
 
 <section class="spaces" id="spaces">
   <div class="wrap">
-    <div class="eyebrow">The space</div>
-    <h2 class="section-title">Two rooms, built for different kinds of focus.</h2>
+    <div class="eyebrow" data-i18n="spaces.eyebrow">The space</div>
+    <h2 class="section-title" data-i18n="spaces.title">Two rooms, built for different kinds of focus.</h2>
 
     <div class="space-grid">
       <article class="space">
@@ -391,9 +412,9 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
         </div>
         <div class="body">
-          <h3>Co-working area</h3>
-          <p>Eight professional desks with power at every seat, plus a dedicated drawer. Separate men's and women's washrooms a few steps away on the same floor.</p>
-          <div class="chips"><span class="chip">8 desks</span><span class="chip">Power at seat</span><span class="chip">Drawer</span></div>
+          <h3 data-i18n="cowork.h">Co-working area</h3>
+          <p data-i18n="cowork.p">Eight professional desks with power at every seat, plus a dedicated drawer. Separate men's and women's washrooms a few steps away on the same floor.</p>
+          <div class="chips"><span class="chip" data-i18n="cowork.c1">8 desks</span><span class="chip" data-i18n="cowork.c2">Power at seat</span><span class="chip" data-i18n="cowork.c3">Drawer</span></div>
         </div>
       </article>
       <article class="space">
@@ -401,9 +422,9 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2zM22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z"/></svg>
         </div>
         <div class="body">
-          <h3>Reading and meeting room</h3>
-          <p>A separate quiet room for up to 12 people. Study in silence, or book the whole room by the hour for meetings, interviews and small workshops.</p>
-          <div class="chips"><span class="chip">12 seats</span><span class="chip">Silent zone</span><span class="chip">Bookable hourly</span></div>
+          <h3 data-i18n="reading.h">Reading and meeting room</h3>
+          <p data-i18n="reading.p">A separate quiet room for up to 12 people. Study in silence, or book the whole room by the hour for meetings, interviews and small workshops.</p>
+          <div class="chips"><span class="chip" data-i18n="reading.c1">12 seats</span><span class="chip" data-i18n="reading.c2">Silent zone</span><span class="chip" data-i18n="reading.c3">Bookable hourly</span></div>
         </div>
       </article>
     </div>
@@ -412,8 +433,8 @@
 
 <section id="gallery">
   <div class="wrap">
-    <div class="eyebrow">Gallery</div>
-    <h2 class="section-title">Take a look around.</h2>
+    <div class="eyebrow" data-i18n="gallery.eyebrow">Gallery</div>
+    <h2 class="section-title" data-i18n="gallery.title">Take a look around.</h2>
     <div class="gallery-grid">
       <figure class="shot"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h3l2-3h6l2 3h3v13H4z"/><circle cx="12" cy="13" r="4"/></svg>Photo 1<br>Co-working area</div><img src="images/photo-1.jpg" alt="AWSM co-working area with desks" loading="lazy" onerror="this.remove()"></figure>
       <figure class="shot"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h3l2-3h6l2 3h3v13H4z"/><circle cx="12" cy="13" r="4"/></svg>Photo 2<br>Reading / meeting room</div><img src="images/photo-2.jpg" alt="AWSM reading and meeting room" loading="lazy" onerror="this.remove()"></figure>
@@ -425,71 +446,71 @@
 
 <section id="amenities">
   <div class="wrap">
-    <div class="eyebrow">Amenities</div>
-    <h2 class="section-title">Everything you need to get work done.</h2>
+    <div class="eyebrow" data-i18n="amen.eyebrow">Amenities</div>
+    <h2 class="section-title" data-i18n="amen.title">Everything you need to get work done.</h2>
     <div class="amen-grid">
-      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Power at every seat</h3><p>Charge your laptop and phone at your desk.</p></div>
-      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18M10 8h4M10 16h4"/></svg></div><h3>Drawers and lockers</h3><p>A drawer at every desk; lockers for monthly members.</p></div>
-      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3>Meeting room</h3><p>Book by the hour for client calls or team sessions.</p></div>
-      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Open 7 am – 10 pm</h3><p>All seven days, so you can work around your schedule.</p></div>
+      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3 data-i18n="amen.h1">Power at every seat</h3><p data-i18n="amen.p1">Charge your laptop and phone at your desk.</p></div>
+      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18M10 8h4M10 16h4"/></svg></div><h3 data-i18n="amen.h2">Drawers and lockers</h3><p data-i18n="amen.p2">A drawer at every desk; lockers for monthly members.</p></div>
+      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3 data-i18n="amen.h3">Meeting room</h3><p data-i18n="amen.p3">Book by the hour for client calls or team sessions.</p></div>
+      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i18n="amen.h4">Open 7 am – 10 pm</h3><p data-i18n="amen.p4">All seven days, so you can work around your schedule.</p></div>
     </div>
   </div>
 </section>
 
 <section class="steps">
   <div class="wrap">
-    <div class="eyebrow">How it works</div>
-    <h2 class="section-title">Start working in three steps.</h2>
+    <div class="eyebrow" data-i18n="steps.eyebrow">How it works</div>
+    <h2 class="section-title" data-i18n="steps.title">Start working in three steps.</h2>
     <div class="step-grid">
-      <div class="step"><h3>Message us</h3><p>Send a WhatsApp or call to check availability and book a visit.</p></div>
-      <div class="step"><h3>Pick a pass</h3><p>Choose 4 hours, a day, a week, 10 days, or a full month.</p></div>
-      <div class="step"><h3>Get to work</h3><p>Take your desk, settle in, and focus. We handle the rest.</p></div>
+      <div class="step"><h3 data-i18n="steps.h1">Message us</h3><p data-i18n="steps.p1">Send a WhatsApp or call to check availability and book a visit.</p></div>
+      <div class="step"><h3 data-i18n="steps.h2">Pick a pass</h3><p data-i18n="steps.p2">Choose 4 hours, a day, a week, 10 days, or a full month.</p></div>
+      <div class="step"><h3 data-i18n="steps.h3">Get to work</h3><p data-i18n="steps.p3">Take your desk, settle in, and focus. We handle the rest.</p></div>
     </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <div class="eyebrow">FAQ</div>
-    <h2 class="section-title">Questions, answered.</h2>
+    <div class="eyebrow" data-i18n="faq.eyebrow">FAQ</div>
+    <h2 class="section-title" data-i18n="faq.title">Questions, answered.</h2>
     <div class="faq-list">
-      <details><summary>Who is AWSM for?</summary><p>Freelancers, remote workers, small teams, and students preparing for exams. Anyone who needs a quiet, reliable place to work or study.</p></details>
-      <details><summary>Do I need to book in advance?</summary><p>Walk-ins are welcome when desks are free. To be sure of a seat, message us on WhatsApp before you come.</p></details>
-      <details><summary>Which passes include a locker?</summary><p>Lockers are included with monthly passes only, with a refundable key deposit of ₹300.</p></details>
-      <details><summary>How do access cards work?</summary><p>Weekly, 10-day and monthly members get an access card for entry. Please return it when your pass ends. If a card is lost, a replacement fee is charged for the new card.</p></details>
-      <details><summary>Do you offer student discounts?</summary><p>Yes. A special discount is available for students with a valid student ID. Message us on WhatsApp for the current student rates.</p></details>
-      <details><summary>Can I book the meeting room separately?</summary><p>Yes. The reading and meeting room can be booked by the hour. Message us for rates and availability.</p></details>
-      <details><summary>Is there a washroom I can use?</summary><p>Yes. Separate washrooms for men and women are available on the same floor, just a few steps from our office.</p></details>
-      <details><summary>What's the difference between the two monthly plans?</summary><p>Both run for 30 days. The 9-hours-a-day plan is ₹3,000 (usually ₹4,000) and the 12-hours-a-day plan is ₹3,500 (usually ₹5,000) during our limited-time launch offer.</p></details>
+      <details><summary data-i18n="faq.q1">Who is AWSM for?</summary><p data-i18n="faq.a1">Freelancers, remote workers, small teams, and students preparing for exams. Anyone who needs a quiet, reliable place to work or study.</p></details>
+      <details><summary data-i18n="faq.q2">Do I need to book in advance?</summary><p data-i18n="faq.a2">Walk-ins are welcome when desks are free. To be sure of a seat, message us on WhatsApp before you come.</p></details>
+      <details><summary data-i18n="faq.q3">Which passes include a locker?</summary><p data-i18n="faq.a3">Lockers are included with monthly passes only, with a refundable key deposit of ₹300.</p></details>
+      <details><summary data-i18n="faq.q4">How do access cards work?</summary><p data-i18n="faq.a4">Weekly, 10-day and monthly members get an access card for entry. Please return it when your pass ends. If a card is lost, a replacement fee is charged for the new card.</p></details>
+      <details><summary data-i18n="faq.q5">Do you offer student discounts?</summary><p data-i18n="faq.a5">Yes. A special discount is available for students with a valid student ID. Message us on WhatsApp for the current student rates.</p></details>
+      <details><summary data-i18n="faq.q6">Can I book the meeting room separately?</summary><p data-i18n="faq.a6">Yes. The reading and meeting room can be booked by the hour. Message us for rates and availability.</p></details>
+      <details><summary data-i18n="faq.q7">Is there a washroom I can use?</summary><p data-i18n="faq.a7">Yes. Separate washrooms for men and women are available on the same floor, just a few steps from our office.</p></details>
+      <details><summary data-i18n="faq.q8">What's the difference between the two monthly plans?</summary><p data-i18n="faq.a8">Both run for 30 days. The 9-hours-a-day plan is ₹3,000 (usually ₹4,000) and the 12-hours-a-day plan is ₹3,500 (usually ₹5,000) during our limited-time launch offer.</p></details>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <div class="eyebrow">Visit us</div>
-    <h2 class="section-title">Drop in, or book the meeting room.</h2>
+    <div class="eyebrow" data-i18n="contact.eyebrow">Visit us</div>
+    <h2 class="section-title" data-i18n="contact.title">Drop in, or book the meeting room.</h2>
     <div class="contact-grid">
       <div class="info">
         <div class="info-item">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-          <div><b>Address</b><span>Office 212, 2nd Floor, Corner Stone,<br>Near Yogidham, Kalyan West,<br>Maharashtra 421301</span><br><a href="https://maps.app.goo.gl/SVDUFAnnZykLd4G38" target="_blank" rel="noopener" style="color:var(--accent-ink);font-weight:600">Get directions →</a></div>
+          <div><b data-i18n="contact.address">Address</b><span>Office 212, 2nd Floor, Corner Stone,<br>Near Yogidham, Kalyan West,<br>Maharashtra 421301</span><br><a href="https://maps.app.goo.gl/SVDUFAnnZykLd4G38" target="_blank" rel="noopener" style="color:var(--accent-ink);font-weight:600" data-i18n="contact.directions">Get directions →</a></div>
         </div>
         <div class="info-item">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <div><b>Opening hours</b><span>7:00 am – 10:00 pm<br>Open all 7 days</span></div>
+          <div><b data-i18n="contact.hours">Opening hours</b><span data-i18n="contact.hoursVal">7:00 am – 10:00 pm<br>Open all 7 days</span></div>
         </div>
         <div class="info-item">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></div>
-          <div><b>Call or WhatsApp</b><a href="tel:+919890930707">+91 98909 30707</a></div>
+          <div><b data-i18n="contact.call">Call or WhatsApp</b><a href="tel:+919890930707">+91 98909 30707</a></div>
         </div>
         <div class="cta-row" style="margin-top:8px">
-          <a class="btn btn-dark" href="https://wa.me/919890930707?text=Hi%20AWSM%2C%20I%27d%20like%20to%20book%20a%20visit." target="_blank" rel="noopener">Message on WhatsApp</a>
+          <a class="btn btn-dark" href="https://wa.me/919890930707?text=Hi%20AWSM%2C%20I%27d%20like%20to%20book%20a%20visit." target="_blank" rel="noopener" data-i18n="contact.wa">Message on WhatsApp</a>
         </div>
       </div>
       <div class="map">
         <iframe src="https://maps.google.com/maps?q=19.2463242,73.1525055&amp;hl=en&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="AWSM location map" allowfullscreen></iframe>
-        <a class="map-open" href="https://maps.app.goo.gl/SVDUFAnnZykLd4G38" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+        <a class="map-open" href="https://maps.app.goo.gl/SVDUFAnnZykLd4G38" target="_blank" rel="noopener" data-i18n="contact.map">Open in Google Maps ↗</a>
       </div>
     </div>
   </div>
@@ -509,6 +530,122 @@
 
 <script>
   try { document.getElementById('yr').textContent = new Date().getFullYear(); } catch (e) {}
+</script>
+
+<!-- Translations: English lives in the HTML above; each [data-i18n] key below
+     overrides it for Hindi (hi) and Hinglish (hl). Missing keys fall back to English. -->
+<script>
+(function () {
+  var T = {
+    hi: {
+      'nav.pricing': 'कीमतें', 'nav.spaces': 'जगह', 'nav.gallery': 'गैलरी', 'nav.faq': 'सवाल-जवाब', 'nav.contact': 'संपर्क', 'nav.book': 'बुक करें',
+      'hero.lead': 'एक शांत, पूरी तरह सुसज्जित को-वर्किंग स्पेस और रीडिंग रूम। कुछ घंटों के लिए आइए, या पूरे महीने के लिए इसे अपनी डेस्क बना लीजिए।',
+      'hero.wa': 'WhatsApp पर बुक करें', 'hero.seePricing': 'कीमतें देखें',
+      'card.from': 'डेस्क सिर्फ़', 'card.per': '/ 4 घंटे',
+      'card.li1': 'अपनी दराज़, सीट पर ही पावर सॉकेट', 'card.li2': 'शांत 12-सीट रीडिंग रूम', 'card.li3': 'घंटे के हिसाब से मीटिंग रूम', 'card.li4': 'सुबह 7 – रात 10 बजे, हर दिन खुला',
+      'stat.desks': 'प्रोफ़ेशनल डेस्क', 'stat.reading': 'सीटों वाला रीडिंग रूम', 'stat.day': 'फ़ुल-डे पास (9 घंटे)', 'stat.month': 'मासिक डेस्क · सीमित समय का ऑफ़र',
+      'pricing.eyebrow': 'कीमतें', 'pricing.title': 'जितना समय चाहिए, उतना ही भुगतान करें।', 'pricing.lead': 'कोई कॉन्ट्रैक्ट नहीं, कोई छिपा शुल्क नहीं। अपने हफ़्ते के हिसाब से पास चुनिए।',
+      'p1.h': 'कम समय के लिए', 'p1.sub': 'एक फ़ोकस्ड सेशन या पूरे दिन के लिए', 'p1.l1': '4 घंटे', 'p1.l2': '9 घंटे (डे पास)', 'p1.note': 'सीधे आइए, या डेस्क रखवाने के लिए हमें मैसेज करें।',
+      'p2.h': 'कई दिनों के लिए', 'p2.sub': 'रोज़ 9 घंटे, परीक्षा की तैयारी, प्रोजेक्ट और व्यस्त हफ़्तों के लिए', 'p2.l1': 'साप्ताहिक पास', 'p2.l2': '10-दिन पास',
+      'p2.note': 'सीमित समय के लिए लॉन्च कीमतें। पास की वैधता के भीतर दिनों का उपयोग करें। इसमें एक एक्सेस कार्ड शामिल है, जिसे पास ख़त्म होने पर लौटाना होगा।',
+      'p3.badge': 'सीमित समय का ऑफ़र', 'p3.h': 'मासिक', 'p3.sub': '30 दिन, आपकी अपनी डेस्क', 'p3.l1': '9 घंटे / दिन', 'p3.l2': '12 घंटे / दिन',
+      'p3.note': 'सीमित समय का लॉन्च ऑफ़र। इसमें एक्सेस कार्ड और आपका अपना लॉकर शामिल है (वापसी योग्य चाबी जमा ₹300)।',
+      'student.tag': 'छात्र', 'student.p': '<b>छात्रों के लिए विशेष छूट उपलब्ध।</b> साइन अप करते समय मान्य स्टूडेंट ID साथ लाएँ।', 'student.a': 'छात्र दरें पूछें →',
+      'spaces.eyebrow': 'हमारी जगह', 'spaces.title': 'दो कमरे, अलग-अलग तरह के फ़ोकस के लिए।',
+      'cowork.h': 'को-वर्किंग एरिया', 'cowork.p': 'आठ प्रोफ़ेशनल डेस्क, हर सीट पर पावर सॉकेट और अपनी दराज़। पुरुषों और महिलाओं के लिए अलग-अलग वॉशरूम, उसी फ़्लोर पर कुछ ही कदम दूर।',
+      'cowork.c1': '8 डेस्क', 'cowork.c2': 'सीट पर पावर', 'cowork.c3': 'दराज़',
+      'reading.h': 'रीडिंग और मीटिंग रूम', 'reading.p': '12 लोगों तक के लिए एक अलग शांत कमरा। शांति से पढ़ाई करें, या मीटिंग, इंटरव्यू और छोटी वर्कशॉप के लिए पूरा कमरा घंटे के हिसाब से बुक करें।',
+      'reading.c1': '12 सीटें', 'reading.c2': 'साइलेंट ज़ोन', 'reading.c3': 'घंटे के हिसाब से बुकिंग',
+      'gallery.eyebrow': 'गैलरी', 'gallery.title': 'एक नज़र डालिए।',
+      'amen.eyebrow': 'सुविधाएँ', 'amen.title': 'काम पूरा करने के लिए ज़रूरी सब कुछ।',
+      'amen.h1': 'हर सीट पर पावर', 'amen.p1': 'अपनी डेस्क पर ही लैपटॉप और फ़ोन चार्ज करें।',
+      'amen.h2': 'दराज़ और लॉकर', 'amen.p2': 'हर डेस्क पर दराज़; मासिक सदस्यों के लिए लॉकर।',
+      'amen.h3': 'मीटिंग रूम', 'amen.p3': 'क्लाइंट कॉल या टीम सेशन के लिए घंटे के हिसाब से बुक करें।',
+      'amen.h4': 'सुबह 7 – रात 10 बजे', 'amen.p4': 'हफ़्ते के सातों दिन, ताकि आप अपने शेड्यूल के हिसाब से काम कर सकें।',
+      'steps.eyebrow': 'कैसे काम करता है', 'steps.title': 'तीन आसान कदमों में शुरू करें।',
+      'steps.h1': 'हमें मैसेज करें', 'steps.p1': 'जगह की उपलब्धता जानने और विज़िट बुक करने के लिए WhatsApp या कॉल करें।',
+      'steps.h2': 'पास चुनें', 'steps.p2': '4 घंटे, एक दिन, एक हफ़्ता, 10 दिन या पूरा महीना चुनें।',
+      'steps.h3': 'काम शुरू करें', 'steps.p3': 'अपनी डेस्क लीजिए, आराम से बैठिए और फ़ोकस कीजिए। बाकी हम संभाल लेंगे।',
+      'faq.eyebrow': 'सवाल-जवाब', 'faq.title': 'आपके सवाल, हमारे जवाब।',
+      'faq.q1': 'AWSM किसके लिए है?', 'faq.a1': 'फ़्रीलांसर, रिमोट वर्कर, छोटी टीमें और परीक्षा की तैयारी कर रहे छात्र। हर वो व्यक्ति जिसे काम या पढ़ाई के लिए एक शांत, भरोसेमंद जगह चाहिए।',
+      'faq.q2': 'क्या पहले से बुक करना ज़रूरी है?', 'faq.a2': 'डेस्क ख़ाली हों तो आप सीधे आ सकते हैं। सीट पक्की करने के लिए आने से पहले WhatsApp पर मैसेज कर दें।',
+      'faq.q3': 'किन पास में लॉकर मिलता है?', 'faq.a3': 'लॉकर सिर्फ़ मासिक पास के साथ मिलता है, ₹300 की वापसी योग्य चाबी जमा राशि के साथ।',
+      'faq.q4': 'एक्सेस कार्ड कैसे काम करता है?', 'faq.a4': 'साप्ताहिक, 10-दिन और मासिक सदस्यों को प्रवेश के लिए एक्सेस कार्ड मिलता है। पास ख़त्म होने पर इसे लौटा दें। कार्ड खो जाने पर नए कार्ड का शुल्क लिया जाता है।',
+      'faq.q5': 'क्या छात्रों को छूट मिलती है?', 'faq.a5': 'हाँ। मान्य स्टूडेंट ID वाले छात्रों के लिए विशेष छूट उपलब्ध है। मौजूदा छात्र दरों के लिए WhatsApp पर मैसेज करें।',
+      'faq.q6': 'क्या मीटिंग रूम अलग से बुक कर सकते हैं?', 'faq.a6': 'हाँ। रीडिंग और मीटिंग रूम घंटे के हिसाब से बुक किया जा सकता है। दरों और उपलब्धता के लिए हमें मैसेज करें।',
+      'faq.q7': 'क्या वॉशरूम की सुविधा है?', 'faq.a7': 'हाँ। पुरुषों और महिलाओं के लिए अलग-अलग वॉशरूम उसी फ़्लोर पर, हमारे ऑफ़िस से कुछ ही कदम दूर हैं।',
+      'faq.q8': 'दोनों मासिक प्लान में क्या फ़र्क है?', 'faq.a8': 'दोनों 30 दिन के हैं। सीमित समय के लॉन्च ऑफ़र में रोज़ 9 घंटे वाला प्लान ₹3,000 (आमतौर पर ₹4,000) और रोज़ 12 घंटे वाला प्लान ₹3,500 (आमतौर पर ₹5,000) का है।',
+      'contact.eyebrow': 'हमसे मिलें', 'contact.title': 'सीधे आइए, या मीटिंग रूम बुक करें।',
+      'contact.address': 'पता', 'contact.directions': 'रास्ता देखें →', 'contact.hours': 'खुलने का समय', 'contact.hoursVal': 'सुबह 7:00 – रात 10:00<br>हफ़्ते के सातों दिन खुला',
+      'contact.call': 'कॉल या WhatsApp करें', 'contact.wa': 'WhatsApp पर मैसेज करें', 'contact.map': 'Google Maps में खोलें ↗'
+    },
+    hl: {
+      'nav.pricing': 'Rates', 'nav.spaces': 'Jagah', 'nav.gallery': 'Photos', 'nav.faq': 'Sawaal', 'nav.contact': 'Contact', 'nav.book': 'Book karein',
+      'hero.lead': 'Ek shaant, poori tarah equipped co-working space aur reading room. Kuch ghanton ke liye aaiye, ya poore mahine ke liye ise apni desk bana lijiye.',
+      'hero.wa': 'WhatsApp pe book karein', 'hero.seePricing': 'Rates dekhein',
+      'card.from': 'Desk sirf', 'card.per': '/ 4 ghante',
+      'card.li1': 'Apna drawer, seat pe hi power socket', 'card.li2': 'Shaant 12-seat reading room', 'card.li3': 'Ghante ke hisaab se meeting room', 'card.li4': 'Subah 7 – raat 10 baje, roz khula',
+      'stat.desks': 'Professional desks', 'stat.reading': 'Seat wala reading room', 'stat.day': 'Full-day pass (9 ghante)', 'stat.month': 'Monthly desk · limited-time offer',
+      'pricing.eyebrow': 'Rates', 'pricing.title': 'Jitna time chahiye, utna hi pay karein.', 'pricing.lead': 'Koi contract nahi, koi hidden charges nahi. Apne hafte ke hisaab se pass chuniye.',
+      'p1.h': 'Short stays', 'p1.sub': 'Ek focused session ya poore din ke liye', 'p1.l1': '4 ghante', 'p1.l2': '9 ghante (day pass)', 'p1.note': 'Seedha aaiye, ya desk hold karwane ke liye humein message karein.',
+      'p2.h': 'Multi-day', 'p2.sub': 'Roz 9 ghante, exam prep, projects aur busy hafton ke liye', 'p2.l1': 'Weekly pass', 'p2.l2': '10-day pass',
+      'p2.note': 'Limited time ke liye launch prices. Pass ki validity ke andar din use karein. Ek access card milega, jo pass khatam hone par wapas karna hoga.',
+      'p3.badge': 'LIMITED-TIME OFFER', 'p3.h': 'Monthly', 'p3.sub': '30 din, aapki regular desk', 'p3.l1': '9 ghante / din', 'p3.l2': '12 ghante / din',
+      'p3.note': 'Limited time ka launch offer. Access card aur dedicated locker included hai (refundable key deposit ₹300).',
+      'student.tag': 'STUDENTS', 'student.p': '<b>Students ke liye special discount.</b> Sign up karte waqt valid student ID saath laayein.', 'student.a': 'Student rates poochein →',
+      'spaces.eyebrow': 'Hamari jagah', 'spaces.title': 'Do rooms, alag-alag tarah ke focus ke liye.',
+      'cowork.h': 'Co-working area', 'cowork.p': 'Aath professional desks, har seat pe power socket aur apna drawer. Gents aur ladies ke liye alag washroom, usi floor pe bas kuch kadam door.',
+      'cowork.c1': '8 desks', 'cowork.c2': 'Seat pe power', 'cowork.c3': 'Drawer',
+      'reading.h': 'Reading aur meeting room', 'reading.p': '12 logon tak ke liye ek alag shaant room. Shaanti se padhai karein, ya meetings, interviews aur chhoti workshops ke liye poora room ghante ke hisaab se book karein.',
+      'reading.c1': '12 seats', 'reading.c2': 'Silent zone', 'reading.c3': 'Hourly booking',
+      'gallery.eyebrow': 'Gallery', 'gallery.title': 'Ek nazar daaliye.',
+      'amen.eyebrow': 'Facilities', 'amen.title': 'Kaam ke liye zaroori sab kuch, yahin.',
+      'amen.h1': 'Har seat pe power', 'amen.p1': 'Apni desk pe hi laptop aur phone charge karein.',
+      'amen.h2': 'Drawers aur lockers', 'amen.p2': 'Har desk pe drawer; monthly members ke liye lockers.',
+      'amen.h3': 'Meeting room', 'amen.p3': 'Client calls ya team sessions ke liye ghante ke hisaab se book karein.',
+      'amen.h4': 'Subah 7 – raat 10 baje', 'amen.p4': 'Hafte ke saaton din, taaki aap apne schedule ke hisaab se kaam kar sakein.',
+      'steps.eyebrow': 'Kaise kaam karta hai', 'steps.title': 'Teen steps mein kaam shuru karein.',
+      'steps.h1': 'Humein message karein', 'steps.p1': 'Availability check karne aur visit book karne ke liye WhatsApp ya call karein.',
+      'steps.h2': 'Pass chuniye', 'steps.p2': '4 ghante, ek din, ek hafta, 10 din ya poora mahina chuniye.',
+      'steps.h3': 'Kaam shuru karein', 'steps.p3': 'Apni desk lijiye, aaraam se baithiye aur focus kijiye. Baaki hum sambhaal lenge.',
+      'faq.eyebrow': 'FAQ', 'faq.title': 'Aapke sawaal, hamare jawaab.',
+      'faq.q1': 'AWSM kiske liye hai?', 'faq.a1': 'Freelancers, remote workers, chhoti teams aur exam ki taiyaari kar rahe students. Koi bhi jise kaam ya padhai ke liye ek shaant, reliable jagah chahiye.',
+      'faq.q2': 'Kya pehle se book karna zaroori hai?', 'faq.a2': 'Desk khaali ho toh aap seedha aa sakte hain. Seat pakki karne ke liye aane se pehle WhatsApp pe message kar dein.',
+      'faq.q3': 'Kis pass mein locker milta hai?', 'faq.a3': 'Locker sirf monthly pass ke saath milta hai, ₹300 ke refundable key deposit ke saath.',
+      'faq.q4': 'Access card kaise kaam karta hai?', 'faq.a4': 'Weekly, 10-day aur monthly members ko entry ke liye access card milta hai. Pass khatam hone par ise wapas kar dein. Card kho jaaye toh naye card ka charge lagta hai.',
+      'faq.q5': 'Kya students ko discount milta hai?', 'faq.a5': 'Haan. Valid student ID wale students ke liye special discount hai. Current student rates ke liye WhatsApp pe message karein.',
+      'faq.q6': 'Kya meeting room alag se book kar sakte hain?', 'faq.a6': 'Haan. Reading aur meeting room ghante ke hisaab se book ho sakta hai. Rates aur availability ke liye humein message karein.',
+      'faq.q7': 'Kya washroom ki suvidha hai?', 'faq.a7': 'Haan. Gents aur ladies ke liye alag washroom usi floor pe hain, hamare office se bas kuch kadam door.',
+      'faq.q8': 'Dono monthly plans mein kya farak hai?', 'faq.a8': 'Dono 30 din ke hain. Limited-time launch offer mein roz 9 ghante wala plan ₹3,000 (normally ₹4,000) aur roz 12 ghante wala plan ₹3,500 (normally ₹5,000) ka hai.',
+      'contact.eyebrow': 'Milne aaiye', 'contact.title': 'Seedha aaiye, ya meeting room book karein.',
+      'contact.address': 'Address', 'contact.directions': 'Raasta dekhein →', 'contact.hours': 'Timing', 'contact.hoursVal': 'Subah 7:00 – raat 10:00<br>Hafte ke saaton din khula',
+      'contact.call': 'Call ya WhatsApp karein', 'contact.wa': 'WhatsApp pe message karein', 'contact.map': 'Google Maps mein kholein ↗'
+    }
+  };
+  var HTML_LANG = { en: 'en', hi: 'hi', hl: 'hi-Latn' };
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var en = [];
+  for (var i = 0; i < nodes.length; i++) en[i] = nodes[i].innerHTML;
+  var picker = document.getElementById('lang');
+
+  function apply(lang) {
+    if (!HTML_LANG[lang]) lang = 'en';
+    var dict = T[lang] || {};
+    for (var i = 0; i < nodes.length; i++) {
+      var k = nodes[i].getAttribute('data-i18n');
+      nodes[i].innerHTML = dict[k] != null ? dict[k] : en[i];
+    }
+    document.documentElement.lang = HTML_LANG[lang];
+    picker.value = lang;
+    try { localStorage.setItem('awsm-lang', lang); } catch (e) {}
+  }
+
+  var start = null;
+  try { start = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  if (!start) { try { start = localStorage.getItem('awsm-lang'); } catch (e) {} }
+  if (start && start !== 'en') apply(start); else picker.value = 'en';
+  picker.addEventListener('change', function () { apply(picker.value); });
+})();
 </script>
 </body>
 </html>
