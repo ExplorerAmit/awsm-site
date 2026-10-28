@@ -132,8 +132,8 @@
   }
 
   /* Devanagari: no tight tracking or wide caps spacing, which breaks the headline stroke */
-  :lang(hi) h1, :lang(hi) h2, :lang(hi) h3 { letter-spacing: 0; line-height: 1.3; }
-  :lang(hi) .eyebrow, :lang(hi) .badge, :lang(hi) .student-note .tag { letter-spacing: 0; }
+  :lang(hi) h1, :lang(hi) h2, :lang(hi) h3, :lang(mr) h1, :lang(mr) h2, :lang(mr) h3 { letter-spacing: 0; line-height: 1.3; }
+  :lang(hi) .eyebrow, :lang(hi) .badge, :lang(hi) .student-note .tag, :lang(mr) .eyebrow, :lang(mr) .badge, :lang(mr) .student-note .tag { letter-spacing: 0; }
 
   /* Hero */
   .hero { background: var(--ink); color: #fff; padding: 96px 0 104px; position: relative; overflow: hidden; }
@@ -312,6 +312,7 @@
       <select class="lang" id="lang" aria-label="Language / भाषा">
         <option value="en">EN</option>
         <option value="hi">हिंदी</option>
+        <option value="mr">मराठी</option>
         <option value="hl">Hinglish</option>
       </select>
       <a class="btn btn-primary" href="https://wa.me/919890930707?text=Hi%20AWSM%2C%20I%27d%20like%20to%20book%20a%20visit." target="_blank" rel="noopener" data-i18n="nav.book">Book a visit</a>
@@ -533,7 +534,7 @@
 </script>
 
 <!-- Translations: English lives in the HTML above; each [data-i18n] key below
-     overrides it for Hindi (hi) and Hinglish (hl). Missing keys fall back to English. -->
+     overrides it for Hindi (hi), Marathi (mr) and Hinglish (hl). Missing keys fall back to English. -->
 <script>
 (function () {
   var T = {
@@ -579,6 +580,48 @@
       'contact.address': 'पता', 'contact.directions': 'रास्ता देखें →', 'contact.hours': 'खुलने का समय', 'contact.hoursVal': 'सुबह 7:00 – रात 10:00<br>हफ़्ते के सातों दिन खुला',
       'contact.call': 'कॉल या WhatsApp करें', 'contact.wa': 'WhatsApp पर मैसेज करें', 'contact.map': 'Google Maps में खोलें ↗'
     },
+    mr: {
+      'nav.pricing': 'दर', 'nav.spaces': 'जागा', 'nav.gallery': 'गॅलरी', 'nav.faq': 'प्रश्नोत्तरे', 'nav.contact': 'संपर्क', 'nav.book': 'बुक करा',
+      'hero.lead': 'एक शांत, सर्व सोयींनी सज्ज को-वर्किंग स्पेस आणि रीडिंग रूम. काही तासांसाठी या, किंवा महिनाभरासाठी हा तुमचा स्वतःचा डेस्क बनवा.',
+      'hero.wa': 'WhatsApp वर बुक करा', 'hero.seePricing': 'दर पहा',
+      'card.from': 'डेस्क फक्त', 'card.per': '/ 4 तास',
+      'card.li1': 'स्वतःचा ड्रॉवर, सीटवरच पॉवर सॉकेट', 'card.li2': 'शांत 12-सीट रीडिंग रूम', 'card.li3': 'तासाच्या हिशोबाने मीटिंग रूम', 'card.li4': 'सकाळी 7 – रात्री 10, रोज सुरू',
+      'stat.desks': 'प्रोफेशनल डेस्क', 'stat.reading': 'सीट्सची रीडिंग रूम', 'stat.day': 'फुल-डे पास (9 तास)', 'stat.month': 'मासिक डेस्क · मर्यादित काळाची ऑफर',
+      'pricing.eyebrow': 'दर', 'pricing.title': 'जितका वेळ हवा, तितकेच पैसे द्या.', 'pricing.lead': 'कोणताही करार नाही, कोणतेही छुपे शुल्क नाही. तुमच्या आठवड्यानुसार पास निवडा.',
+      'p1.h': 'थोड्या वेळासाठी', 'p1.sub': 'एका फोकस्ड सेशनसाठी किंवा पूर्ण दिवसासाठी', 'p1.l1': '4 तास', 'p1.l2': '9 तास (डे पास)', 'p1.note': 'थेट या, किंवा डेस्क राखून ठेवण्यासाठी आम्हाला मेसेज करा.',
+      'p2.h': 'अनेक दिवसांसाठी', 'p2.sub': 'रोज 9 तास, परीक्षेची तयारी, प्रोजेक्ट्स आणि व्यस्त आठवड्यांसाठी', 'p2.l1': 'साप्ताहिक पास', 'p2.l2': '10-दिवसांचा पास',
+      'p2.note': 'मर्यादित काळासाठी लाँच दर. पासच्या वैधतेमध्ये दिवस वापरा. यात एक ॲक्सेस कार्ड मिळते, जे पास संपल्यावर परत करावे लागेल.',
+      'p3.badge': 'मर्यादित काळाची ऑफर', 'p3.h': 'मासिक', 'p3.sub': '30 दिवस, तुमचा नेहमीचा डेस्क', 'p3.l1': '9 तास / दिवस', 'p3.l2': '12 तास / दिवस',
+      'p3.note': 'मर्यादित काळाची लाँच ऑफर. यात ॲक्सेस कार्ड आणि तुमचा स्वतःचा लॉकर समाविष्ट आहे (परत मिळणारी चावी अनामत ₹300).',
+      'student.tag': 'विद्यार्थी', 'student.p': '<b>विद्यार्थ्यांसाठी खास सवलत उपलब्ध.</b> साइन अप करताना वैध स्टुडंट ID सोबत आणा.', 'student.a': 'विद्यार्थी दर विचारा →',
+      'spaces.eyebrow': 'आमची जागा', 'spaces.title': 'दोन खोल्या, वेगवेगळ्या प्रकारच्या फोकससाठी.',
+      'cowork.h': 'को-वर्किंग एरिया', 'cowork.p': 'आठ प्रोफेशनल डेस्क, प्रत्येक सीटवर पॉवर सॉकेट आणि स्वतःचा ड्रॉवर. पुरुष आणि महिलांसाठी वेगळी वॉशरूम्स, त्याच मजल्यावर काही पावलांवर.',
+      'cowork.c1': '8 डेस्क', 'cowork.c2': 'सीटवर पॉवर', 'cowork.c3': 'ड्रॉवर',
+      'reading.h': 'रीडिंग आणि मीटिंग रूम', 'reading.p': '12 लोकांपर्यंत बसण्याची एक वेगळी शांत खोली. शांतपणे अभ्यास करा, किंवा मीटिंग, इंटरव्ह्यू आणि छोट्या वर्कशॉपसाठी संपूर्ण खोली तासाच्या हिशोबाने बुक करा.',
+      'reading.c1': '12 सीट्स', 'reading.c2': 'सायलेंट झोन', 'reading.c3': 'तासाने बुकिंग',
+      'gallery.eyebrow': 'गॅलरी', 'gallery.title': 'एक नजर टाका.',
+      'amen.eyebrow': 'सुविधा', 'amen.title': 'काम पूर्ण करण्यासाठी लागणारे सर्व काही.',
+      'amen.h1': 'प्रत्येक सीटवर पॉवर', 'amen.p1': 'तुमच्या डेस्कवरच लॅपटॉप आणि फोन चार्ज करा.',
+      'amen.h2': 'ड्रॉवर आणि लॉकर', 'amen.p2': 'प्रत्येक डेस्कला ड्रॉवर; मासिक सदस्यांसाठी लॉकर.',
+      'amen.h3': 'मीटिंग रूम', 'amen.p3': 'क्लायंट कॉल किंवा टीम सेशनसाठी तासाच्या हिशोबाने बुक करा.',
+      'amen.h4': 'सकाळी 7 – रात्री 10', 'amen.p4': 'आठवड्याचे सातही दिवस, म्हणजे तुम्ही तुमच्या वेळापत्रकानुसार काम करू शकता.',
+      'steps.eyebrow': 'हे कसे चालते', 'steps.title': 'तीन सोप्या पायऱ्यांत सुरुवात करा.',
+      'steps.h1': 'आम्हाला मेसेज करा', 'steps.p1': 'जागा उपलब्ध आहे का ते पाहण्यासाठी आणि भेट बुक करण्यासाठी WhatsApp किंवा कॉल करा.',
+      'steps.h2': 'पास निवडा', 'steps.p2': '4 तास, एक दिवस, एक आठवडा, 10 दिवस किंवा पूर्ण महिना निवडा.',
+      'steps.h3': 'कामाला सुरुवात करा', 'steps.p3': 'तुमचा डेस्क घ्या, निवांत बसा आणि लक्ष केंद्रित करा. बाकी सगळं आम्ही पाहू.',
+      'faq.eyebrow': 'प्रश्नोत्तरे', 'faq.title': 'तुमचे प्रश्न, आमची उत्तरे.',
+      'faq.q1': 'AWSM कोणासाठी आहे?', 'faq.a1': 'फ्रीलान्सर, रिमोट वर्कर, छोट्या टीम्स आणि परीक्षेची तयारी करणारे विद्यार्थी. काम किंवा अभ्यासासाठी शांत, विश्वासार्ह जागा हवी असलेला कोणीही.',
+      'faq.q2': 'आधी बुकिंग करणे आवश्यक आहे का?', 'faq.a2': 'डेस्क रिकामे असतील तर तुम्ही थेट येऊ शकता. सीट नक्की करण्यासाठी येण्यापूर्वी WhatsApp वर मेसेज करा.',
+      'faq.q3': 'कोणत्या पाससोबत लॉकर मिळतो?', 'faq.a3': 'लॉकर फक्त मासिक पाससोबत मिळतो, ₹300 च्या परत मिळणाऱ्या चावी अनामतीसह.',
+      'faq.q4': 'ॲक्सेस कार्ड कसे काम करते?', 'faq.a4': 'साप्ताहिक, 10-दिवसांच्या आणि मासिक सदस्यांना प्रवेशासाठी ॲक्सेस कार्ड मिळते. पास संपल्यावर ते परत करा. कार्ड हरवल्यास नवीन कार्डचे शुल्क आकारले जाते.',
+      'faq.q5': 'विद्यार्थ्यांना सवलत मिळते का?', 'faq.a5': 'हो. वैध स्टुडंट ID असलेल्या विद्यार्थ्यांसाठी खास सवलत उपलब्ध आहे. सध्याच्या विद्यार्थी दरांसाठी WhatsApp वर मेसेज करा.',
+      'faq.q6': 'मीटिंग रूम वेगळी बुक करता येते का?', 'faq.a6': 'हो. रीडिंग आणि मीटिंग रूम तासाच्या हिशोबाने बुक करता येते. दर आणि उपलब्धतेसाठी आम्हाला मेसेज करा.',
+      'faq.q7': 'वॉशरूमची सोय आहे का?', 'faq.a7': 'हो. पुरुष आणि महिलांसाठी वेगळी वॉशरूम्स त्याच मजल्यावर, आमच्या ऑफिसपासून काही पावलांवर आहेत.',
+      'faq.q8': 'दोन्ही मासिक प्लॅनमध्ये काय फरक आहे?', 'faq.a8': 'दोन्ही 30 दिवसांचे आहेत. मर्यादित काळाच्या लाँच ऑफरमध्ये रोज 9 तासांचा प्लॅन ₹3,000 (साधारणपणे ₹4,000) आणि रोज 12 तासांचा प्लॅन ₹3,500 (साधारणपणे ₹5,000) आहे.',
+      'contact.eyebrow': 'आम्हाला भेटा', 'contact.title': 'थेट या, किंवा मीटिंग रूम बुक करा.',
+      'contact.address': 'पत्ता', 'contact.directions': 'मार्ग पहा →', 'contact.hours': 'वेळ', 'contact.hoursVal': 'सकाळी 7:00 – रात्री 10:00<br>आठवड्याचे सातही दिवस सुरू',
+      'contact.call': 'कॉल किंवा WhatsApp करा', 'contact.wa': 'WhatsApp वर मेसेज करा', 'contact.map': 'Google Maps मध्ये उघडा ↗'
+    },
     hl: {
       'nav.pricing': 'Rates', 'nav.spaces': 'Jagah', 'nav.gallery': 'Photos', 'nav.faq': 'Sawaal', 'nav.contact': 'Contact', 'nav.book': 'Book karein',
       'hero.lead': 'Ek shaant, poori tarah equipped co-working space aur reading room. Kuch ghanton ke liye aaiye, ya poore mahine ke liye ise apni desk bana lijiye.',
@@ -622,7 +665,7 @@
       'contact.call': 'Call ya WhatsApp karein', 'contact.wa': 'WhatsApp pe message karein', 'contact.map': 'Google Maps mein kholein ↗'
     }
   };
-  var HTML_LANG = { en: 'en', hi: 'hi', hl: 'hi-Latn' };
+  var HTML_LANG = { en: 'en', hi: 'hi', mr: 'mr', hl: 'hi-Latn' };
   var nodes = document.querySelectorAll('[data-i18n]');
   var en = [];
   for (var i = 0; i < nodes.length; i++) en[i] = nodes[i].innerHTML;
