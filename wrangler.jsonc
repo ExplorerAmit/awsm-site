@@ -1,0 +1,8 @@
+{
+  // Cloudflare Workers config. "name" must match the Worker's name in the dashboard.
+  "name": "awsm-site",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "." },
+  // Required for branch previews (`npx wrangler preview` on non-production branches)
+  "previews": {}
+}
