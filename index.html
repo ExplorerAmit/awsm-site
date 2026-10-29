@@ -271,6 +271,15 @@
   footer .logo { font-size: 21px; }
   footer .logo svg { width: 30px; height: 30px; }
 
+  /* One-liners between sections (kept as written in every language) */
+  .quip { padding: 34px 0; background: var(--accent-tint); border-top: 1px solid var(--accent-tint-line); border-bottom: 1px solid var(--accent-tint-line); text-align: center; }
+  .quip p { margin: 0 auto; padding: 0 20px; max-width: 36ch; font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 700; font-size: clamp(20px, 3vw, 28px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+  .quip p::before { content: ""; display: block; width: 36px; height: 3px; border-radius: 3px; background: var(--accent-ink); margin: 0 auto 14px; }
+  .student-quip { margin: 32px 0 0; font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 700; font-size: 20px; color: var(--accent-ink); }
+
+  /* Seasonal banner above the header; removed by script after its data-until date */
+  .topbar { background: var(--accent); color: var(--ink); text-align: center; font-size: 14px; font-weight: 600; padding: 9px 16px; }
+
   /* Floating WhatsApp */
   .wa-float { position: fixed; right: 18px; bottom: 18px; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.2); z-index: 30; }
   .wa-float svg { width: 28px; height: 28px; }
@@ -299,6 +308,8 @@
     <circle cx="60" cy="33" r="9.5" fill="#14161A"/>
   </symbol>
 </svg>
+
+<div class="topbar" data-until="2026-11-12" lang="hi-Latn">🪔 Diwali ki safai ghar mein, aapka focus yahan.</div>
 
 <header class="nav">
   <div class="wrap nav-inner">
@@ -356,6 +367,8 @@
   </div>
 </section>
 
+<aside class="quip"><p lang="hi-Latn">Café mein kaam karne ke liye ₹300 ki coffee? Yahan ₹100 mein 4 ghante.</p></aside>
+
 <section id="pricing">
   <div class="wrap">
     <div class="eyebrow" data-i18n="pricing.eyebrow">Pricing</div>
@@ -394,6 +407,7 @@
         <div class="note" data-i18n="p3.note">Launch offer for a limited time. Includes an access card and a dedicated locker (refundable key deposit ₹300).</div>
       </div>
     </div>
+    <p class="student-quip" lang="hi-Latn">Ghar pe padhai = 10 minute padhai, 50 minute fridge.</p>
     <div class="student-note">
       <span class="tag" data-i18n="student.tag">STUDENTS</span>
       <p data-i18n="student.p"><b>Special discount available for students.</b> Bring a valid student ID when you sign up.</p>
@@ -401,6 +415,8 @@
     </div>
   </div>
 </section>
+
+<aside class="quip"><p lang="hi-Latn">Ghar pe kaam? Pressure cooker ki seeti meeting mein bhi sunai deti hai.</p></aside>
 
 <section class="spaces" id="spaces">
   <div class="wrap">
@@ -458,6 +474,8 @@
   </div>
 </section>
 
+<aside class="quip"><p lang="en">Client call at 11. Doorbell at 11:01. Every single day.</p></aside>
+
 <section class="steps">
   <div class="wrap">
     <div class="eyebrow" data-i18n="steps.eyebrow">How it works</div>
@@ -486,6 +504,8 @@
     </div>
   </div>
 </section>
+
+<aside class="quip"><p lang="hi-Latn">Shor ghar pe chhodo, focus yahan lao.</p></aside>
 
 <section class="contact" id="contact">
   <div class="wrap">
@@ -520,8 +540,8 @@
 <footer>
   <div class="wrap">
     <a href="#top" class="logo" aria-label="awsm.im home"><svg aria-hidden="true"><use href="#awsm-mark"/></svg><span>awsm<span class="tld">.im</span></span></a>
-    <span>Awesome Work Study Meeting place · Kalyan West</span>
-    <span>© <span id="yr">2026</span> AWSM</span>
+    <span lang="en">Not an office. Not your home. Just AWSM.</span>
+    <span>© <span id="yr">2026</span> AWSM · Kalyan West</span>
   </div>
 </footer>
 
@@ -531,6 +551,9 @@
 
 <script>
   try { document.getElementById('yr').textContent = new Date().getFullYear(); } catch (e) {}
+  document.querySelectorAll('.topbar[data-until]').forEach(function (b) {
+    if (new Date() > new Date(b.getAttribute('data-until') + 'T23:59:59+05:30')) b.remove();
+  });
 </script>
 
 <!-- Translations: English lives in the HTML above; each [data-i18n] key below
