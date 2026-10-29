@@ -29,7 +29,7 @@
   "@id": "https://awsm.im/#business",
   "name": "AWSM (Awesome Work Study Meeting place)",
   "alternateName": ["AWSM", "awsm.im"],
-  "description": "Co-working space, study library and quiet reading room in Kalyan West. 8 professional desks, a 12-seat reading and meeting room, power at every seat, lockers for monthly members. Open 7 am to 10 pm daily. Student discounts available.",
+  "description": "Co-working space, study library and quiet reading room in Kalyan West. 8 professional desks, a 12-seat reading and meeting room, power at every seat, lockers and Wi-Fi for monthly members. Open 7 am to 10 pm daily. Student discounts available.",
   "url": "https://awsm.im/",
   "image": "https://awsm.im/images/og-image.png",
   "logo": "https://awsm.im/images/icon-512.png",
@@ -56,7 +56,8 @@
     { "@type": "LocationFeatureSpecification", "name": "Power at every seat", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Silent reading room", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Meeting room bookable hourly", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Lockers", "value": true }
+    { "@type": "LocationFeatureSpecification", "name": "Lockers for monthly members", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Wi-Fi for monthly members", "value": true }
   ],
   "keywords": "co-working space, study library, reading room, study room, meeting room, Kalyan West"
 }
@@ -219,7 +220,7 @@
   @media (max-width: 760px) { .gallery-grid { grid-auto-rows: 160px; gap: 10px; } }
 
   /* Amenities */
-  .amen-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+  .amen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
   .amen { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
   .amen .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-tint); color: var(--accent-ink); display: grid; place-items: center; margin-bottom: 14px; }
   .amen .ico svg { width: 22px; height: 22px; }
@@ -407,7 +408,7 @@
           <div class="row"><span class="label" data-i18n="p3.l1">9 hrs / day</span><span class="amt"><s class="was">₹4,000</s>₹3,000</span></div>
           <div class="row"><span class="label" data-i18n="p3.l2">12 hrs / day</span><span class="amt"><s class="was">₹5,000</s>₹3,500</span></div>
         </div>
-        <div class="note" data-i18n="p3.note">Launch offer for a limited time. Includes an access card and a dedicated locker (refundable key deposit ₹300).</div>
+        <div class="note" data-i18n="p3.note">Launch offer for a limited time. Includes Wi-Fi, an access card and a dedicated locker (refundable key deposit ₹300).</div>
       </div>
     </div>
     <p class="student-quip" lang="hi-Latn"><span class="quip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="m8 3 4 4 4-4"/></svg></span><span>Ghar pe padhai = 10 minute padhai, 50 minute TV, fridge aur bed.</span></p>
@@ -470,7 +471,9 @@
     <h2 class="section-title" data-i18n="amen.title">Everything you need to get work done.</h2>
     <div class="amen-grid">
       <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3 data-i18n="amen.h1">Power at every seat</h3><p data-i18n="amen.p1">Charge your laptop and phone at your desk.</p></div>
-      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18M10 8h4M10 16h4"/></svg></div><h3 data-i18n="amen.h2">Drawers and lockers</h3><p data-i18n="amen.p2">A drawer at every desk; lockers for monthly members.</p></div>
+      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18M10 8h4M10 16h4"/></svg></div><h3 data-i18n="amen.h2">Drawer at every desk</h3><p data-i18n="amen.p2">Room for your books, notes and charger.</p></div>
+      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a15 15 0 0 1 20 0"/><path d="M5 12a10.5 10.5 0 0 1 14 0"/><path d="M8.5 15.5a5.5 5.5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg></div><h3 data-i18n="amen.h6">Wi-Fi</h3><p data-i18n="amen.p6">Included for monthly members.</p></div>
+      <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3 data-i18n="amen.h5">Lockers</h3><p data-i18n="amen.p5">A dedicated locker for monthly members.</p></div>
       <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3 data-i18n="amen.h3">Meeting room</h3><p data-i18n="amen.p3">Book by the hour for client calls or team sessions.</p></div>
       <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i18n="amen.h4">Open 7 am – 10 pm</h3><p data-i18n="amen.p4">All seven days, so you can work around your schedule.</p></div>
     </div>
@@ -499,6 +502,7 @@
       <details><summary data-i18n="faq.q1">Who is AWSM for?</summary><p data-i18n="faq.a1">Freelancers, remote workers, small teams, and students preparing for exams. Anyone who needs a quiet, reliable place to work or study.</p></details>
       <details><summary data-i18n="faq.q2">Do I need to book in advance?</summary><p data-i18n="faq.a2">Walk-ins are welcome when desks are free. To be sure of a seat, message us on WhatsApp before you come.</p></details>
       <details><summary data-i18n="faq.q3">Which passes include a locker?</summary><p data-i18n="faq.a3">Lockers are included with monthly passes only, with a refundable key deposit of ₹300.</p></details>
+      <details><summary data-i18n="faq.q9">Is there Wi-Fi?</summary><p data-i18n="faq.a9">Yes, for monthly members. Wi-Fi is included with both monthly plans. It is not included with the 4-hour, day, weekly or 10-day passes, so please use your own mobile data on those.</p></details>
       <details><summary data-i18n="faq.q4">How do access cards work?</summary><p data-i18n="faq.a4">Weekly, 10-day and monthly members get an access card for entry. Please return it when your pass ends. If a card is lost, a replacement fee is charged for the new card.</p></details>
       <details><summary data-i18n="faq.q5">Do you offer student discounts?</summary><p data-i18n="faq.a5">Yes. A special discount is available for students with a valid student ID. Message us on WhatsApp for the current student rates.</p></details>
       <details><summary data-i18n="faq.q6">Can I book the meeting room separately?</summary><p data-i18n="faq.a6">Yes. The reading and meeting room can be booked by the hour. Message us for rates and availability.</p></details>
@@ -576,7 +580,7 @@
       'p2.h': 'कई दिनों के लिए', 'p2.sub': 'रोज़ 9 घंटे, परीक्षा की तैयारी, प्रोजेक्ट और व्यस्त हफ़्तों के लिए', 'p2.l1': 'साप्ताहिक पास', 'p2.l2': '10-दिन पास',
       'p2.note': 'सीमित समय के लिए लॉन्च कीमतें। पास की वैधता के भीतर दिनों का उपयोग करें। इसमें एक एक्सेस कार्ड शामिल है, जिसे पास ख़त्म होने पर लौटाना होगा।',
       'p3.badge': 'सीमित समय का ऑफ़र', 'p3.h': 'मासिक', 'p3.sub': '30 दिन, आपकी अपनी डेस्क', 'p3.l1': '9 घंटे / दिन', 'p3.l2': '12 घंटे / दिन',
-      'p3.note': 'सीमित समय का लॉन्च ऑफ़र। इसमें एक्सेस कार्ड और आपका अपना लॉकर शामिल है (वापसी योग्य चाबी जमा ₹300)।',
+      'p3.note': 'सीमित समय का लॉन्च ऑफ़र। इसमें Wi-Fi, एक्सेस कार्ड और आपका अपना लॉकर शामिल है (वापसी योग्य चाबी जमा ₹300)।',
       'student.tag': 'छात्र', 'student.p': '<b>छात्रों के लिए विशेष छूट उपलब्ध।</b> साइन अप करते समय मान्य स्टूडेंट ID साथ लाएँ।', 'student.a': 'छात्र दरें पूछें →',
       'spaces.eyebrow': 'हमारी जगह', 'spaces.title': 'दो कमरे, अलग-अलग तरह के फ़ोकस के लिए।',
       'cowork.h': 'को-वर्किंग एरिया', 'cowork.p': 'आठ प्रोफ़ेशनल डेस्क, हर सीट पर पावर सॉकेट और अपनी दराज़। पुरुषों और महिलाओं के लिए अलग-अलग वॉशरूम, उसी फ़्लोर पर कुछ ही कदम दूर।',
@@ -586,7 +590,8 @@
       'gallery.eyebrow': 'गैलरी', 'gallery.title': 'एक नज़र डालिए।',
       'amen.eyebrow': 'सुविधाएँ', 'amen.title': 'काम पूरा करने के लिए ज़रूरी सब कुछ।',
       'amen.h1': 'हर सीट पर पावर', 'amen.p1': 'अपनी डेस्क पर ही लैपटॉप और फ़ोन चार्ज करें।',
-      'amen.h2': 'दराज़ और लॉकर', 'amen.p2': 'हर डेस्क पर दराज़; मासिक सदस्यों के लिए लॉकर।',
+      'amen.h2': 'हर डेस्क पर दराज़', 'amen.p2': 'किताबें, नोट्स और चार्जर रखने की जगह।',
+      'amen.h5': 'लॉकर', 'amen.p5': 'मासिक सदस्यों के लिए अपना लॉकर।', 'amen.h6': 'Wi-Fi', 'amen.p6': 'मासिक सदस्यों के लिए शामिल।',
       'amen.h3': 'मीटिंग रूम', 'amen.p3': 'क्लाइंट कॉल या टीम सेशन के लिए घंटे के हिसाब से बुक करें।',
       'amen.h4': 'सुबह 7 – रात 10 बजे', 'amen.p4': 'हफ़्ते के सातों दिन, ताकि आप अपने शेड्यूल के हिसाब से काम कर सकें।',
       'steps.eyebrow': 'कैसे काम करता है', 'steps.title': 'तीन आसान कदमों में शुरू करें।',
@@ -597,6 +602,7 @@
       'faq.q1': 'AWSM किसके लिए है?', 'faq.a1': 'फ़्रीलांसर, रिमोट वर्कर, छोटी टीमें और परीक्षा की तैयारी कर रहे छात्र। हर वो व्यक्ति जिसे काम या पढ़ाई के लिए एक शांत, भरोसेमंद जगह चाहिए।',
       'faq.q2': 'क्या पहले से बुक करना ज़रूरी है?', 'faq.a2': 'डेस्क ख़ाली हों तो आप सीधे आ सकते हैं। सीट पक्की करने के लिए आने से पहले WhatsApp पर मैसेज कर दें।',
       'faq.q3': 'किन पास में लॉकर मिलता है?', 'faq.a3': 'लॉकर सिर्फ़ मासिक पास के साथ मिलता है, ₹300 की वापसी योग्य चाबी जमा राशि के साथ।',
+      'faq.q9': 'क्या Wi-Fi मिलता है?', 'faq.a9': 'हाँ, मासिक सदस्यों के लिए। दोनों मासिक प्लान में Wi-Fi शामिल है। 4 घंटे, डे, साप्ताहिक और 10-दिन पास में Wi-Fi शामिल नहीं है, इसलिए इनमें अपना मोबाइल डेटा इस्तेमाल करें।',
       'faq.q4': 'एक्सेस कार्ड कैसे काम करता है?', 'faq.a4': 'साप्ताहिक, 10-दिन और मासिक सदस्यों को प्रवेश के लिए एक्सेस कार्ड मिलता है। पास ख़त्म होने पर इसे लौटा दें। कार्ड खो जाने पर नए कार्ड का शुल्क लिया जाता है।',
       'faq.q5': 'क्या छात्रों को छूट मिलती है?', 'faq.a5': 'हाँ। मान्य स्टूडेंट ID वाले छात्रों के लिए विशेष छूट उपलब्ध है। मौजूदा छात्र दरों के लिए WhatsApp पर मैसेज करें।',
       'faq.q6': 'क्या मीटिंग रूम अलग से बुक कर सकते हैं?', 'faq.a6': 'हाँ। रीडिंग और मीटिंग रूम घंटे के हिसाब से बुक किया जा सकता है। दरों और उपलब्धता के लिए हमें मैसेज करें।',
@@ -618,7 +624,7 @@
       'p2.h': 'अनेक दिवसांसाठी', 'p2.sub': 'रोज 9 तास, परीक्षेची तयारी, प्रोजेक्ट्स आणि व्यस्त आठवड्यांसाठी', 'p2.l1': 'साप्ताहिक पास', 'p2.l2': '10-दिवसांचा पास',
       'p2.note': 'मर्यादित काळासाठी लाँच दर. पासच्या वैधतेमध्ये दिवस वापरा. यात एक ॲक्सेस कार्ड मिळते, जे पास संपल्यावर परत करावे लागेल.',
       'p3.badge': 'मर्यादित काळाची ऑफर', 'p3.h': 'मासिक', 'p3.sub': '30 दिवस, तुमचा नेहमीचा डेस्क', 'p3.l1': '9 तास / दिवस', 'p3.l2': '12 तास / दिवस',
-      'p3.note': 'मर्यादित काळाची लाँच ऑफर. यात ॲक्सेस कार्ड आणि तुमचा स्वतःचा लॉकर समाविष्ट आहे (परत मिळणारी चावी अनामत ₹300).',
+      'p3.note': 'मर्यादित काळाची लाँच ऑफर. यात Wi-Fi, ॲक्सेस कार्ड आणि तुमचा स्वतःचा लॉकर समाविष्ट आहे (परत मिळणारी चावी अनामत ₹300).',
       'student.tag': 'विद्यार्थी', 'student.p': '<b>विद्यार्थ्यांसाठी खास सवलत उपलब्ध.</b> साइन अप करताना वैध स्टुडंट ID सोबत आणा.', 'student.a': 'विद्यार्थी दर विचारा →',
       'spaces.eyebrow': 'आमची जागा', 'spaces.title': 'दोन खोल्या, वेगवेगळ्या प्रकारच्या फोकससाठी.',
       'cowork.h': 'को-वर्किंग एरिया', 'cowork.p': 'आठ प्रोफेशनल डेस्क, प्रत्येक सीटवर पॉवर सॉकेट आणि स्वतःचा ड्रॉवर. पुरुष आणि महिलांसाठी वेगळी वॉशरूम्स, त्याच मजल्यावर काही पावलांवर.',
@@ -628,7 +634,8 @@
       'gallery.eyebrow': 'गॅलरी', 'gallery.title': 'एक नजर टाका.',
       'amen.eyebrow': 'सुविधा', 'amen.title': 'काम पूर्ण करण्यासाठी लागणारे सर्व काही.',
       'amen.h1': 'प्रत्येक सीटवर पॉवर', 'amen.p1': 'तुमच्या डेस्कवरच लॅपटॉप आणि फोन चार्ज करा.',
-      'amen.h2': 'ड्रॉवर आणि लॉकर', 'amen.p2': 'प्रत्येक डेस्कला ड्रॉवर; मासिक सदस्यांसाठी लॉकर.',
+      'amen.h2': 'प्रत्येक डेस्कला ड्रॉवर', 'amen.p2': 'पुस्तके, नोट्स आणि चार्जर ठेवण्यासाठी जागा.',
+      'amen.h5': 'लॉकर', 'amen.p5': 'मासिक सदस्यांसाठी स्वतःचा लॉकर.', 'amen.h6': 'Wi-Fi', 'amen.p6': 'मासिक सदस्यांसाठी समाविष्ट.',
       'amen.h3': 'मीटिंग रूम', 'amen.p3': 'क्लायंट कॉल किंवा टीम सेशनसाठी तासाच्या हिशोबाने बुक करा.',
       'amen.h4': 'सकाळी 7 – रात्री 10', 'amen.p4': 'आठवड्याचे सातही दिवस, म्हणजे तुम्ही तुमच्या वेळापत्रकानुसार काम करू शकता.',
       'steps.eyebrow': 'हे कसे चालते', 'steps.title': 'तीन सोप्या पायऱ्यांत सुरुवात करा.',
@@ -639,6 +646,7 @@
       'faq.q1': 'AWSM कोणासाठी आहे?', 'faq.a1': 'फ्रीलान्सर, रिमोट वर्कर, छोट्या टीम्स आणि परीक्षेची तयारी करणारे विद्यार्थी. काम किंवा अभ्यासासाठी शांत, विश्वासार्ह जागा हवी असलेला कोणीही.',
       'faq.q2': 'आधी बुकिंग करणे आवश्यक आहे का?', 'faq.a2': 'डेस्क रिकामे असतील तर तुम्ही थेट येऊ शकता. सीट नक्की करण्यासाठी येण्यापूर्वी WhatsApp वर मेसेज करा.',
       'faq.q3': 'कोणत्या पाससोबत लॉकर मिळतो?', 'faq.a3': 'लॉकर फक्त मासिक पाससोबत मिळतो, ₹300 च्या परत मिळणाऱ्या चावी अनामतीसह.',
+      'faq.q9': 'Wi-Fi मिळते का?', 'faq.a9': 'हो, मासिक सदस्यांसाठी. दोन्ही मासिक प्लॅनमध्ये Wi-Fi समाविष्ट आहे. 4 तास, डे, साप्ताहिक आणि 10-दिवसांच्या पासमध्ये Wi-Fi समाविष्ट नाही, त्यामुळे त्यांसाठी तुमचा मोबाइल डेटा वापरा.',
       'faq.q4': 'ॲक्सेस कार्ड कसे काम करते?', 'faq.a4': 'साप्ताहिक, 10-दिवसांच्या आणि मासिक सदस्यांना प्रवेशासाठी ॲक्सेस कार्ड मिळते. पास संपल्यावर ते परत करा. कार्ड हरवल्यास नवीन कार्डचे शुल्क आकारले जाते.',
       'faq.q5': 'विद्यार्थ्यांना सवलत मिळते का?', 'faq.a5': 'हो. वैध स्टुडंट ID असलेल्या विद्यार्थ्यांसाठी खास सवलत उपलब्ध आहे. सध्याच्या विद्यार्थी दरांसाठी WhatsApp वर मेसेज करा.',
       'faq.q6': 'मीटिंग रूम वेगळी बुक करता येते का?', 'faq.a6': 'हो. रीडिंग आणि मीटिंग रूम तासाच्या हिशोबाने बुक करता येते. दर आणि उपलब्धतेसाठी आम्हाला मेसेज करा.',
@@ -660,7 +668,7 @@
       'p2.h': 'Multi-day', 'p2.sub': 'Roz 9 ghante, exam prep, projects aur busy hafton ke liye', 'p2.l1': 'Weekly pass', 'p2.l2': '10-day pass',
       'p2.note': 'Limited time ke liye launch prices. Pass ki validity ke andar din use karein. Ek access card milega, jo pass khatam hone par wapas karna hoga.',
       'p3.badge': 'LIMITED-TIME OFFER', 'p3.h': 'Monthly', 'p3.sub': '30 din, aapki regular desk', 'p3.l1': '9 ghante / din', 'p3.l2': '12 ghante / din',
-      'p3.note': 'Limited time ka launch offer. Access card aur dedicated locker included hai (refundable key deposit ₹300).',
+      'p3.note': 'Limited time ka launch offer. Wi-Fi, access card aur dedicated locker included hai (refundable key deposit ₹300).',
       'student.tag': 'STUDENTS', 'student.p': '<b>Students ke liye special discount.</b> Sign up karte waqt valid student ID saath laayein.', 'student.a': 'Student rates poochein →',
       'spaces.eyebrow': 'Hamari jagah', 'spaces.title': 'Do rooms, alag-alag tarah ke focus ke liye.',
       'cowork.h': 'Co-working area', 'cowork.p': 'Aath professional desks, har seat pe power socket aur apna drawer. Gents aur ladies ke liye alag washroom, usi floor pe bas kuch kadam door.',
@@ -670,7 +678,8 @@
       'gallery.eyebrow': 'Gallery', 'gallery.title': 'Ek nazar daaliye.',
       'amen.eyebrow': 'Facilities', 'amen.title': 'Kaam ke liye zaroori sab kuch, yahin.',
       'amen.h1': 'Har seat pe power', 'amen.p1': 'Apni desk pe hi laptop aur phone charge karein.',
-      'amen.h2': 'Drawers aur lockers', 'amen.p2': 'Har desk pe drawer; monthly members ke liye lockers.',
+      'amen.h2': 'Har desk pe drawer', 'amen.p2': 'Books, notes aur charger rakhne ki jagah.',
+      'amen.h5': 'Lockers', 'amen.p5': 'Monthly members ke liye apna locker.', 'amen.h6': 'Wi-Fi', 'amen.p6': 'Monthly members ke liye included.',
       'amen.h3': 'Meeting room', 'amen.p3': 'Client calls ya team sessions ke liye ghante ke hisaab se book karein.',
       'amen.h4': 'Subah 7 – raat 10 baje', 'amen.p4': 'Hafte ke saaton din, taaki aap apne schedule ke hisaab se kaam kar sakein.',
       'steps.eyebrow': 'Kaise kaam karta hai', 'steps.title': 'Teen steps mein kaam shuru karein.',
@@ -681,6 +690,7 @@
       'faq.q1': 'AWSM kiske liye hai?', 'faq.a1': 'Freelancers, remote workers, chhoti teams aur exam ki taiyaari kar rahe students. Koi bhi jise kaam ya padhai ke liye ek shaant, reliable jagah chahiye.',
       'faq.q2': 'Kya pehle se book karna zaroori hai?', 'faq.a2': 'Desk khaali ho toh aap seedha aa sakte hain. Seat pakki karne ke liye aane se pehle WhatsApp pe message kar dein.',
       'faq.q3': 'Kis pass mein locker milta hai?', 'faq.a3': 'Locker sirf monthly pass ke saath milta hai, ₹300 ke refundable key deposit ke saath.',
+      'faq.q9': 'Kya Wi-Fi milta hai?', 'faq.a9': 'Haan, monthly members ke liye. Dono monthly plans mein Wi-Fi included hai. 4-hour, day, weekly aur 10-day pass mein Wi-Fi nahi hai, toh unmein apna mobile data use karein.',
       'faq.q4': 'Access card kaise kaam karta hai?', 'faq.a4': 'Weekly, 10-day aur monthly members ko entry ke liye access card milta hai. Pass khatam hone par ise wapas kar dein. Card kho jaaye toh naye card ka charge lagta hai.',
       'faq.q5': 'Kya students ko discount milta hai?', 'faq.a5': 'Haan. Valid student ID wale students ke liye special discount hai. Current student rates ke liye WhatsApp pe message karein.',
       'faq.q6': 'Kya meeting room alag se book kar sakte hain?', 'faq.a6': 'Haan. Reading aur meeting room ghante ke hisaab se book ho sakta hai. Rates aur availability ke liye humein message karein.',
